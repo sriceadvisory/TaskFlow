@@ -1,11 +1,11 @@
 from django.utils import timezone
 from rest_framework import serializers
-from .models import Task
+from .models import Tasks
 
 
-class TaskSerializer(serializers.ModelSerializer):
+class TasksSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Task
+        model = Tasks
         fields = ('title', 'description', 'completed', 'priority','due_date')
 
     def validate_priority(self, value):

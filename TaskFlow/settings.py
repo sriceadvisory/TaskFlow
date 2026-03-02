@@ -33,8 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'core',
-    'task',
+    'tasks',
     'rest_framework',
     'django_filters',
     'django.contrib.admin',
@@ -55,7 +54,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'TaskManager.urls'
+ROOT_URLCONF = 'TaskFlow.urls'
 
 TEMPLATES = [
     {
@@ -72,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'TaskManager.wsgi.application'
+WSGI_APPLICATION = 'TaskFlow.wsgi.application'
 
 
 # Database

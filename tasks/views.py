@@ -1,13 +1,13 @@
 from rest_framework import generics
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework.filters import SearchFilter, OrderingFilter
-from .serializer import TaskSerializer
-from .models import Task
+from .serializer import TasksSerializer
+from .models import Tasks
 
 # Create your views here.
-class TaskListCreateAPIView(generics.ListCreateAPIView):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
+class TasksListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Tasks.objects.all()
+    serializer_class = TasksSerializer
 
     #Filtering and searching settings
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
@@ -16,7 +16,7 @@ class TaskListCreateAPIView(generics.ListCreateAPIView):
     ordering_fields = ['created_at']
     ordering = ['-created_at']
 
-class TaskDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Task.objects.all()
-    serializer_class = TaskSerializer
+class TasksDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Tasks.objects.all()
+    serializer_class = TasksSerializer
 
