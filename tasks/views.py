@@ -9,6 +9,14 @@ class TasksListCreateAPIView(generics.ListCreateAPIView):
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
 
+    def get_queryset(self):
+        return Tasks.objects.filter(owner=self.request.user)
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
+
     #Filtering and searching settings
     filter_backends = [DjangoFilterBackend, SearchFilter, OrderingFilter]
     filterset_fields = ["title"]
@@ -19,4 +27,12 @@ class TasksListCreateAPIView(generics.ListCreateAPIView):
 class TasksDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Tasks.objects.all()
     serializer_class = TasksSerializer
+
+    def get_queryset(self):
+        return Task.objects.filter(owner=self.request.user)
+    
+    def get_serializer_context(self):
+        context = super().get_serializer_context()
+        context["request"] = self.request
+        return context
 
