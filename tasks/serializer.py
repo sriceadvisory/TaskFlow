@@ -8,6 +8,11 @@ class TasksSerializer(serializers.ModelSerializer):
         model = Tasks
         fields = ('title', 'description', 'completed', 'priority','due_date')
 
+    def create(self, validated_data):
+         request = self.context["request"]
+         validated_data['owner'] = request.user
+         return super().create(validated_data)
+
     def validate_priority(self, value):
             if not (1 <= value <= 5):
                 raise serializers.ValidationError("Priority must be 1-5.")
