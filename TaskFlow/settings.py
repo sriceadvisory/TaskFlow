@@ -28,14 +28,18 @@ SECRET_KEY = 'django-insecure--^0i7rw+i#82f_ui@lc0=7lzw3iu7!#+e6_xj)7r9eldp7p3#(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
+
+# CORS: allow frontend (e.g. file:// or another port) to call API
+CORS_ALLOW_ALL_ORIGINS = True  # for dev only; in production set CORS_ALLOWED_ORIGINS
 
 
 # Application definition
 
 INSTALLED_APPS = [
-    'django_extensions',
-    'tasks',
+    'corsheaders',
+    'django_extensions.apps.DjangoExtensionsConfig',
+    'tasks.apps.TasksConfig',
     'rest_framework',
     'django_filters',
     'django.contrib.admin',
@@ -48,6 +52,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
