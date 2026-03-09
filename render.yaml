@@ -1,0 +1,26 @@
+databases:
+  - name: TaskFlow
+    plan: free
+    databaseName: mysite
+    user: mysite
+
+services:
+  - type: web
+    plan: free
+    name: mysite
+    runtime: python
+    buildCommand: './TaskFlow/build.sh'
+    startCommand: 'gunicorn TaskFlow.wsgi:application '
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: TaskFlow
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DEBUG
+        value: '0'
+      - key: ALLOWED_HOSTS
+        value: 'mysite.onrender.com'
+      - key: WEB_CONCURRENCY
+        value: 4
