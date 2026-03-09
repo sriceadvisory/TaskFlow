@@ -1,6 +1,8 @@
 asgiref==3.11.1
 brotli==1.2.0
 dj-database-url==3.1.2
+gunicorn==25.1.0
+uvicorn==0.41.0
 Django==6.0.2
 django-cors-headers==4.9.0
 django-extensions==4.1
