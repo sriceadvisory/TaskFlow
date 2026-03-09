@@ -21,6 +21,6 @@ services:
       - key: DEBUG
         value: '0'
       - key: ALLOWED_HOSTS
-        value: 'mysite.onrender.com'
+        value: 'mysite-752k.onrender.com'
       - key: WEB_CONCURRENCY
         value: 4

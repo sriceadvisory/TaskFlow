@@ -188,7 +188,7 @@
 <script type="text/babel">{% verbatim %}
 const { useState, useEffect, useCallback } = React;
 
-const API = 'http://localhost:8000/api';
+const API = (typeof window !== 'undefined' ? window.location.origin : '') + '/api';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
