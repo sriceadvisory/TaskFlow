@@ -17,9 +17,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+from .views import index_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', index_view, name='index'),
 
     #API Routes 
     path("api/", include("tasks.urls")),
